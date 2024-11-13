@@ -1,0 +1,94 @@
+@charset "utf-8";
+
+@media (max-width:780px) {
+  #play { 
+    width:100vw !important; 
+    height:100vh !important; 
+    background-position:center !important; 
+    overflow:hidden !important; 
+  }
+  .countdown { 
+    width:100% !important; 
+    height:100% !important; 
+    margin:0px !important; 
+    padding:0px !important; 
+  }
+  #play>h2 { 
+    width:200px !important; 
+    margin:0 auto !important; 
+  }
+  #play>h2>img { 
+    height:100px !important; 
+  }
+
+  #play>.score { 
+    width:120px !important; 
+    height:70px !important; 
+    padding:14px !important; 
+    font-size:20px !important; 
+    top:60px !important; 
+    left:20px !important; 
+  }
+  #play>.time { 
+    width:100px !important; 
+    font-size:20px !important; 
+    top:60px !important; 
+    right:20px !important; 
+  }
+  #play>.life { 
+    width:120px !important; 
+    right:20px !important; 
+    top:150px !important; 
+    padding:0px !important; 
+  }
+  #play>.life img { 
+    width:30px !important; 
+  }
+
+  #play>.play_area { 
+    width:100% !important; 
+    height:100% !important; 
+    gap:10px !important; 
+    justify-content:flex-start !important; 
+    align-items:flex-start !important; 
+    margin:70px auto !important; 
+  }
+  #play>.play_area div { 
+    width:80px !important; 
+    height:80px !important; 
+  }
+  #play>.play_area div img { 
+    width:80px !important; 
+    height:80px !important; 
+  }
+
+  .result-screen {
+    width:100% !important; 
+    height:100% !important; 
+    overflow:hidden !important; 
+  }
+  .result-screen .text { 
+    width:100% !important; 
+  }
+  .result-screen h2 {
+    font-size:60px !important; 
+    width:100% !important; 
+  }
+  .result-screen .score { 
+    font-size:80px !important; 
+  }
+  .result-screen button { 
+    margin:70px auto 0px !important; 
+    width:60% !important; 
+    font-size:30px !important;
+  }
+  .result-screen .choice { 
+    margin-top:20px !important; 
+  }
+
+  .trident>img { 
+    width:100px !important; 
+    height:auto !important; 
+    margin:-60px 0 0 -30px !important; 
+  }
+}

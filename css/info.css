@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: 'CookieRun-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  }
+  body,html{ width:100vw; height:100vh; font-family:'CookieRun-Regular'; }
+  body,section,h2,button,p{ margin:0; padding:0; }
+  img{ display:block; }
+  body{ background:#C9E7F2; display:flex; justify-content:center; align-items:center; }
+  section{
+    width:1024px; height:768px; background:#F2EFDF; display:flex; flex-direction:column; align-items:center;
+    border-radius:30px; border:10px dashed #402015;
+  }
+  section>h2{
+    font-size:60px; text-align:center; color:#F25CAF; font-weight:bold; margin:10px 0; text-shadow:1px 6px #fff;
+  }
+  section>.step{ height:100%; display:flex; flex-direction:column; justify-content:space-around; }
+  section>.step>div>p{ font-size:28px; font-weight:100; color:#333; margin-bottom:14px; }
+  section>.step>div>p>span{
+    width:120px; height:50px; line-height:50px; text-align:center; margin-right:10px;
+    display:inline-block; background:#A1D991; color:#fff; border-radius:20px; box-sizing:border-box;
+  }
+  section>.step>div>div{ display:flex; }
+  section>.step>.one{ display:flex; flex-direction:column; }
+  section>.step>div>div{ display:flex; align-items:flex-end; justify-content:center; }
+  section>.step>div>div>img{ width:auto; height:100px; }
+
+  button{
+    font-size:48px; font-family: 'CookieRun-Regular'; 
+    border:6px solid #fff; border-radius:20px; background:transparent; cursor:pointer; color:#fff;
+    width:260px; height:100px; box-shadow:3px 3px 3px 0 rgba(0,0,0,0.9); text-shadow:2px 4px rgba(0,0,0,0.5);
+    margin-bottom:20px;
+  }
+
+
+@media (max-width:768px) {
+  section { width:90vw; height:90vh; border:3px dashed #402015; }
+  section>h2 { font-size:30px; }
+  section>.step { width:90vw; height:90vh; }
+
+  section>.step>div>div>img { height:70px; }
+
+  section>.step>div>p { font-size:18px; padding:0 10px; }
+  section>.step>div>p>span {
+    width:80px; height:40px; line-height:40px;
+  }
+
+  button{ font-size:30px; width:180px; height:70px;}
+}
+

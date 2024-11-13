@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>먼작귀 토벌! 게임</title>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <section>
+    <h1>몬스터 잡기!</h1>
+    <button class="start">게임시작</button>
+    <button class="info">게임설명</button>
+  </section>
+  <script>
+    document.querySelector('.start').addEventListener('click',()=>{
+      window.location.href='choice.html';
+    });
+    document.querySelector('.info').addEventListener('click',()=>{
+      window.location.href='info.html';
+    });
+  </script>
+</body>
+</html>

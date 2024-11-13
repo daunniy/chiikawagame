@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>캐릭터 선택</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/choice.css">
+</head>
+<body>
+  <section>
+    <h2>캐릭터 선택</h2>
+    <div class="choice swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide hachiware"><h3>하치와레</h3></div>
+        <div class="swiper-slide chiikawa"><h3>치이카와</h3></div>
+        <div class="swiper-slide usagi"><h3>우사기</h3></div>
+      </div>
+      <button class="swiper-button-next"></button>
+      <button class="swiper-button-prev"></button>
+      <span class="swiper-pagination"></span>
+    </div>
+  </section>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    document.querySelector('.hachiware').addEventListener('click',()=>{
+      window.location.href='hachiware_game.html';
+    });
+    document.querySelector('.chiikawa').addEventListener('click',()=>{
+      window.location.href='chiikawa_game.html';
+    });
+    document.querySelector('.usagi').addEventListener('click',()=>{
+      window.location.href='usagi_game.html';
+    });
+
+
+    // 모바일에서만 Swiper 적용
+    if (window.innerWidth <= 780) {
+      const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    }
+  </script>
+</body>
+</html>

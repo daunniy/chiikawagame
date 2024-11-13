@@ -1,0 +1,43 @@
+@charset "utf-8";
+@font-face {
+  font-family: 'MaplestoryOTFBold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+body,html{ width:100vw; height:100vh; }
+body,section,h1,button{ margin:0; padding:0; }
+body{ background:#ffc0cb; display:flex; justify-content:center; align-items:center; }
+section{
+  background:url("../img/index_bg.png") no-repeat; background-size:cover;
+  width:1024px; height:768px; position: relative;
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+}
+h1{
+  font-family:'MaplestoryOTFBold'; font-size:80px; text-align:center; color:#f2da5e; 
+  text-shadow:-1px 5px #fff, 0px 5px #fff, 3px 0px #fff, 3px 3px #fff;
+  position:absolute; top:150px;
+}
+button{
+  font-size:48px; font-family:'MaplestoryOTFBold'; position:absolute; top:40%;
+  border:6px solid #fff; border-radius:20px; background:transparent; cursor:pointer; color:#fff;
+  width:260px; height:100px; box-shadow:3px 3px 3px 0 rgba(0,0,0,0.9); text-shadow:2px 4px rgba(0,0,0,0.5);
+  transition:box-shadow .7s, top .2s, background .2s;
+}
+button:active{  box-shadow:none;}
+button:hover{ top:38%; background:rgba(255,255,255,0.4); }
+.start { left:220px; }
+.info { right:220px; }
+audio {
+  position: absolute;
+}
+
+
+@media (max-width:768px){
+  section { width:100vw; height:100vh; background-size:cover; background-position:center; }
+  h1{ font-size:40px; top:17%; }
+  button{ font-size:30px; width:140px; height:70px; top:80%;}
+  button:hover{ top:80%; background:transparent; }
+  .start { left:10%; }
+  .info { right:10%; }
+}

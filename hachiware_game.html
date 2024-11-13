@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
+  minimum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no, address=no, email=no">
+  <title>hachiware game</title>
+  <link rel="stylesheet" href="css/mobile_game.css">
+  <style>
+    @font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+    :root {
+      --mainThemeColor:#77aacb;
+    }
+    body,html{ width:100vw; height:100vh; font-family:'CookieRun-Regular'; }
+    body,section,h1,button{ margin:0; padding:0; }
+    body{ background:var(--mainThemeColor); display:flex; justify-content:center; align-items:center; }
+    section{
+      background:url("img/game_bg.png"); width:1024px; height:768px;
+      display:flex; flex-direction:column; justify-content:center; align-items:center;
+    }
+    #play{ position:relative; display:block; }
+    #play>h2{ width:400px; margin:20px auto; }
+    #play>h2>img{ height:200px; }
+    #play>.play_area{
+      width:100%;  margin:50px auto 0; display:flex; flex-flow:row wrap;
+      justify-content:space-around; align-content:space-around; gap:40px;
+    }
+    #play>.play_area>div{ width:100px; height:100px; border-radius:50%; }
+    #play>.play_area>div>img{  width:100px; height:100px;  object-fit:contain;}
+    #play>.score{
+      width:126px; padding:10px; text-align:center; font-size:30px;
+      font-weight:bold; color:#333; position:absolute; left:100px; top:50px;
+      background:#fff; border-radius:20px;
+    }
+    #play>.score>span{ color:red; font-size:22px; }
+    #play>.time{
+      width:170px; padding:10px; text-align:center; font-size:30px;
+      font-weight:bold; color:#333; position:absolute; right:100px; top:50px;
+      background:#fff; border-radius:20px;
+    }
+    #play>.time>span{ color:#333; font-size:22px; }
+
+    #play>.life{
+      width:170px; padding:10px; position:absolute; right:100px; top:180px;
+      display:flex; justify-content:center;
+    }
+    #play>.life>span{ display:block; width:50px; height:50px; background:url("img/life.png") no-repeat; }
+
+    .result-screen {
+    width:1024px; height:768px;
+    position:relative;
+    display: none;
+    text-align: center;
+    padding: 20px;
+    }
+    .result-screen h2{
+      font-size:80px; width:430px; color:#333; text-shadow:2px 4px rgba(0,0,0,0.5); margin:70px auto;
+    }
+    .result-screen .score {
+      font-size:100px; line-height:100px;
+      margin:20px auto;
+      color:#333;
+      background-color:rgba(255,255,255,0.8);
+      width:300px;
+    }
+    .result-screen .text {
+      font-size:30px; margin-left:500px;
+    }
+    .result-screen button{
+      display:block; font-size:40px; font-family:'CookieRun-Regular'; margin:140px auto 30px;
+      border:6px solid #fff; border-radius:20px; background:transparent; cursor:pointer; color:#fff;
+      width:200px; height:80px; box-shadow:1px 1px 10px 0 rgba(0,0,0,0.5); text-shadow:2px 4px rgba(0,0,0,0.5);
+      background:var(--mainThemeColor); background-color:var(--mainThemeColor);
+      transition:all .3s;
+    }
+    .result-screen .choice {
+      width:230px; background:rgba(0,0,0,0.5); margin-top:0px;
+    }
+    .result-screen button:hover{ transform:translateY(-10px); }
+
+
+    #resultViewScreen {
+      background:url("img/result.png") no-repeat; background-size:cover; background-position:center;
+    }
+
+    #lowScoreScreen {
+      background:#fff url("img/lowScore_h.png") no-repeat;
+      background-position:center;
+    }
+    #midScoreScreen {
+      background:#fff url("img/midScore_h.png") no-repeat; background-position:center;
+    }
+    #highScoreScreen {
+      background:#fff url("img/highScore_h.jpeg") no-repeat; background-position:center;
+    }
+    .countdown{
+      width:100vw; height:100vh; z-index:10000; background:rgba(0,0,0,0.7);
+      display:flex; justify-content:center; align-items:center; font-size:100px;
+      color:var(--mainThemeColor); font-weight:bold;
+    }
+
+
+
+    .trident{
+      position:absolute; left:0px; top:0px; z-index:100; pointer-events:none;
+      transition:all 0.03s;
+    }
+    .trident>img{ width:200px; height:auto; margin:-60px 0 0 -30px; }
+
+  </style>
+</head>
+<body>
+  <section id="play">
+    <h2><img src="img/hachiiwoo.png" alt=""></h2>
+    <div class="play_area">
+      <div class="c1"></div>
+      <div class="c2"></div>
+      <div class="c3"></div>
+      <div class="c4"></div>
+      <div class="c5"></div>
+      <div class="c6"></div>
+      <div class="c7"></div>
+      <div class="c8"></div>
+      <div class="c9"></div>
+      <div class="c10"></div>
+      <div class="c11"></div>
+      <div class="c12"></div>
+      <div class="c13"></div>
+      <div class="c14"></div>
+      <div class="c15"></div>
+      <div class="c16"></div>
+      <div class="c17"></div>
+      <div class="c18"></div>
+    </div>
+    <p class="score">처치한<br>몬스터<br><span>0</span></p>
+    <p class="time">남은 시간<br><span>0</span></p>
+    <p class="life"><span></span><span></span><span></span></p>
+  </section>
+
+  <div id="resultViewScreen" class="result-screen">
+    <h2>과연...</h2>
+  </div>
+  <div id="lowScoreScreen" class="result-screen">
+    <h2>하수-!</h2>
+    <p class="score">0</p>
+    <p class="text">나 어디로 가는 걸까...</p>
+    <button class="again">다시하기</button>
+    <button class="choice">캐릭터 변경</button>
+  </div>
+  <div id="midScoreScreen" class="result-screen">
+    <h2>중수-!</h2>
+    <p class="score">0</p>
+    <p class="text">난 괜찮아..</p>
+    <button class="again">다시하기</button>
+    <button class="choice">캐릭터 변경</button>
+  </div>
+  <div id="highScoreScreen" class="result-screen">
+    <h2>고수-!</h2>
+    <p class="score">0</p>
+    <p class="text">정말 굉장해!</p>
+    <button class="again">다시하기</button>
+    <button class="choice">캐릭터 변경</button>
+  </div>
+  <span class="trident"><img src="img/samjichang2.png" alt=""></span>
+
+  <script src="js/game.js"></script>
+  <script>
+  document.querySelectorAll('.again').forEach(button => {
+    button.addEventListener('click', () => {
+      window.location.href = 'hachiware_game.html';
+    });
+  });
+
+  // 모든 .choice 버튼에 이벤트 리스너 추가
+  document.querySelectorAll('.choice').forEach(button => {
+    button.addEventListener('click', () => {
+      window.location.href = 'choice.html';
+    });
+  });
+  </script>
+</body>
+</html>
