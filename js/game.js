@@ -73,22 +73,60 @@ function startGame() {
   }
 
 
+  
 
 
 
-  function clickControl(e){
-    const imgNum = parseInt( e.target.dataset.number );
-    if( imgNum >=4 ){
-      lives--;
-      updateLive();
-    }else{
-      score++;
-      updateScore();
+  function clickControl(e) {
+    const img = e.target;
+    const imgNum = parseInt(img.dataset.number); // 클릭한 이미지의 번호
+  
+    // 점수가 20점 이상일 때 "shine" 효과 추가
+    if (score > 20) {
+      img.classList.add('shine');
+      setTimeout(() => {
+        img.classList.remove('shine'); // 0.5초 후 "shine" 효과 제거
+      }, 500); // shine 효과를 0.5초 동안만 적용
+    }
+  
+    // 잘못된 이미지 클릭 (imgNum >= 4)
+    if (imgNum >= 4) {
+      lives--; // 생명 감소
+      updateLive(); // 생명 업데이트
+  
+      // 잘못된 이미지를 떨리게 만드는 애니메이션 효과
+      img.classList.add('shake'); // shake 클래스 추가
+      setTimeout(() => {
+        img.classList.remove('shake'); // 애니메이션 끝난 후 shake 클래스 제거
+      }, 500); // 0.5초 후 떨림 효과 제거
+  
+      // 잘못된 이미지 클릭 시 음향 효과 (옵션, 예시로 추가)
+      const wrongSound = document.getElementById('wrong-sound');
+      if (wrongSound) {
+        wrongSound.play(); // 클릭 소리 재생
+      }
+    } else {
+      // 올바른 이미지 클릭
+      score++; // 점수 증가
+      updateScore(); // 점수 업데이트
+  
+      // 이미지 클릭 시 깜빡이는 효과
+      img.classList.add('blink');
+      setTimeout(() => {
+        img.classList.remove('blink');
+      }, 1000); // 깜빡이는 효과를 1초간 적용
     }
   }
+  
+  
 
   function updateScore(){
     scoreElement.textContent = score;
+    scoreElement.classList.add('score-increase');
+  setTimeout(() => {
+    scoreElement.classList.remove('score-increase');
+  }, 500); // 효과가 끝난 후 클래스 제거
+
   }
   function updateLive(){
     lifeElement.innerHTML = ''; // 기존 콘텐츠를 비움
